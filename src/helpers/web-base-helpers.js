@@ -1,6 +1,6 @@
 import React from 'react';
 
-export async function getNavLinks() {
+async function getNavLinksInternal() {
   console.info(
     'Requesting navigation links from CMS'
   );
@@ -8,6 +8,8 @@ export async function getNavLinks() {
 
   return LINKS;
 }
+
+export const getNavLinks = React.cache(getNavLinksInternal);
 
 const delay = (ms) =>
   new Promise((resolve) =>
